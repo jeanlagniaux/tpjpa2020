@@ -10,6 +10,11 @@ public class JpaTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		/**
+		 * Lien pour montrer les valeurs
+		 * jdbc:hsqldb:hsql://localhost/
+		 */
 
 		EntityManager manager = EntityManagerHelper.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
