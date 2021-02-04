@@ -15,7 +15,7 @@ public class JpaTest {
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
 
-
+		// test
 		try {
 
 		} catch (Exception e) {
