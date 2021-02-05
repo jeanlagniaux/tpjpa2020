@@ -1,5 +1,6 @@
 package jpa.business;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Board {
+public class Board implements Serializable{
 	private Long id;
 	private String Name;
 	private String Description;
@@ -19,6 +20,9 @@ public class Board {
 	private List<User> users = new ArrayList<User>();
 	// private User Owner;
 
+	public Board() {
+	}
+	
 	@Id
 	@GeneratedValue
 	public Long getId() {

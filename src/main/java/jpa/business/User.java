@@ -1,5 +1,6 @@
 package jpa.business;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,10 +10,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User {
+public class User implements Serializable{
 	private String mail;
 	private String name;
 	private List<Card> cards = new ArrayList<Card>();
+	
+	
+	
+
+	public User() {
+		
+	}
 
 	@Id
 	public String getMail() {

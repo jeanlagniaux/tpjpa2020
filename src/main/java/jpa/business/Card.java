@@ -1,5 +1,6 @@
 package jpa.business;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Card {
+public class Card implements Serializable{
 
 	private Long id;
 	private String name;
@@ -24,6 +25,9 @@ public class Card {
 	private List<String> tags = new ArrayList<String>();
 	private String url;
 	private Board myBoard;
+	
+	public Card() {
+	}
 
 	@Id
 	@GeneratedValue
