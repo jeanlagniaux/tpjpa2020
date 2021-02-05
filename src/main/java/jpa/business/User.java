@@ -1,32 +1,45 @@
 package jpa.business;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
-	private Long id;
-	private Card card;
+	private String mail;
+	private String name;
+	private List<Card> cards = new ArrayList<Card>();
 
 	@Id
-	@GeneratedValue
-	public Long getId() {
-		return id;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
-	@ManyToOne()
-	public Card getCard() {
-		return card;
+	public String getName() {
+		return name;
 	}
 
-	public void setCard(Card card) {
-		this.card = card;
+	public void setName(String name) {
+		this.name = name;
 	}
+
+	@OneToMany
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
+	}
+	
+	
 
 }

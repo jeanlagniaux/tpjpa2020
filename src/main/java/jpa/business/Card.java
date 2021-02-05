@@ -4,11 +4,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Card {
@@ -28,6 +29,10 @@ public class Card {
 	@GeneratedValue
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -70,7 +75,7 @@ public class Card {
 		this.endDate = endDate;
 	}
 
-	@OneToMany(mappedBy = "card")
+	@ManyToOne
 	public User getAffectedUser() {
 		return affectedUser;
 	}
@@ -79,6 +84,8 @@ public class Card {
 		this.affectedUser = affectedUser;
 	}
 
+	@Column
+	@ElementCollection
 	public List<String> getTags() {
 		return tags;
 	}

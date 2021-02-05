@@ -10,10 +10,9 @@ public class JpaTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
+
 		/**
-		 * Lien pour montrer les valeurs
-		 * jdbc:hsqldb:hsql://localhost/
+		 * Lien pour montrer les valeurs jdbc:hsqldb:hsql://localhost/
 		 */
 
 		EntityManager manager = EntityManagerHelper.getEntityManager();
@@ -29,11 +28,9 @@ public class JpaTest {
 		}
 		tx.commit();
 
-
 		manager.close();
 		EntityManagerHelper.closeEntityManagerFactory();
-		//		factory.close();
+		// factory.close();
 	}
-
 
 }

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -15,9 +16,8 @@ public class Board {
 	private String Name;
 	private String Description;
 	private List<Card> cards = new ArrayList<Card>();
-	private List<Card> todo = new ArrayList<Card>();
-	private List<Card> doing = new ArrayList<Card>();
-	private List<Card> done = new ArrayList<Card>();
+	private List<User> users = new ArrayList<User>();
+	// private User Owner;
 
 	@Id
 	@GeneratedValue
@@ -55,28 +55,13 @@ public class Board {
 		this.cards = cards;
 	}
 
-	public List<Card> getTodo() {
-		return todo;
+	@ManyToMany
+	public List<User> getUsers() {
+		return users;
 	}
 
-	public void setTodo(List<Card> todo) {
-		this.todo = todo;
-	}
-
-	public List<Card> getDoing() {
-		return doing;
-	}
-
-	public void setDoing(List<Card> doing) {
-		this.doing = doing;
-	}
-
-	public List<Card> getDone() {
-		return done;
-	}
-
-	public void setDone(List<Card> done) {
-		this.done = done;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 }
