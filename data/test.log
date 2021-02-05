@@ -1,3 +1,37 @@
-/*C1*/SET SCHEMA SYSTEM_LOBS
-INSERT INTO BLOCKS VALUES(0,2147483647,0)
-COMMIT
+/*C6*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C7*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C8*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C9*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C10*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C11*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C12*/SET SCHEMA PUBLIC
+drop table if exists Board CASCADE 
+drop table if exists Board_User CASCADE 
+drop table if exists Card CASCADE 
+drop table if exists Card_tags CASCADE 
+drop table if exists User CASCADE 
+drop table if exists User_Card CASCADE 
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table Board (id bigint not null, description varchar(255), name varchar(255), primary key (id))
+create table Board_User (Board_id bigint not null, users_mail varchar(255) not null)
+create table Card (id bigint not null, endDate date, name varchar(255), note varchar(255), status varchar(255), timeToDO integer not null, url varchar(255), affectedUser_mail varchar(255), myBoard_id bigint, KanbanId bigint, primary key (id))
+create table Card_tags (Card_id bigint not null, tags varchar(255))
+create table User (mail varchar(255) not null, name varchar(255), primary key (mail))
+create table User_Card (User_mail varchar(255) not null, cards_id bigint not null)
+alter table User_Card add constraint UK_34wjmhob7ojritscndghoypfk unique (cards_id)
+alter table Board_User add constraint FKqqajkfxkbvog7krr329v0o5s4 foreign key (users_mail) references User
+alter table Board_User add constraint FK98i1ta179kmfo3xw2xskfdy0v foreign key (Board_id) references Board
+alter table Card add constraint FKhvuaa0ne9ssh4nv7wdxp0d01q foreign key (affectedUser_mail) references User
+alter table Card add constraint FKarwr4c0fbvlah9b25hjsrvy6p foreign key (myBoard_id) references Board
+alter table Card add constraint FKqbp1ay1mdf9qex8w0cbu7pqce foreign key (KanbanId) references Board
+alter table Card_tags add constraint FKmb4xrgbtvtfv8pudv0phcqlyw foreign key (Card_id) references Card
+alter table User_Card add constraint FKkkrx6u877rsr6evbs707i641f foreign key (cards_id) references Card
+alter table User_Card add constraint FK852in2nfumedxdwmwnke3kdsr foreign key (User_mail) references User
+DISCONNECT

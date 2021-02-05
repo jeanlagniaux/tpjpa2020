@@ -11,6 +11,10 @@ public class JpaTest {
 	 */
 	public static void main(String[] args) {
 
+		/**
+		 * Lien pour montrer les valeurs jdbc:hsqldb:hsql://localhost/
+		 */
+
 		EntityManager manager = EntityManagerHelper.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
@@ -24,11 +28,9 @@ public class JpaTest {
 		}
 		tx.commit();
 
-
 		manager.close();
 		EntityManagerHelper.closeEntityManagerFactory();
-		//		factory.close();
+		// factory.close();
 	}
-
 
 }
