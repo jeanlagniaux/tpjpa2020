@@ -1,14 +1,20 @@
 package jpa.business;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Project implements Serializable{
 
 	private Long id;
 	private String name;
+	private List<Board> boards = new ArrayList<Board>();
 	
 	public Project() {
 	}
@@ -30,6 +36,16 @@ public class Project implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@OneToMany(mappedBy = "myProject")
+	public List<Board> getBoards() {
+		return boards;
+	}
+
+	public void setBoards(List<Board> boards) {
+		this.boards = boards;
+	}
+	
 	
 	
 }

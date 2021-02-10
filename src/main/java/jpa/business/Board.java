@@ -7,8 +7,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -16,6 +16,7 @@ public class Board implements Serializable{
 	private Long id;
 	private String Name;
 	private String Description;
+	private Project myProject;
 	private List<Card> cards = new ArrayList<Card>();
 	private List<User> users = new ArrayList<User>();
 	// private User Owner;
@@ -49,8 +50,7 @@ public class Board implements Serializable{
 		Description = description;
 	}
 
-	@OneToMany
-	@JoinColumn(name = "KanbanId")
+	@OneToMany(mappedBy = "myBoard")
 	public List<Card> getCards() {
 		return cards;
 	}
@@ -59,7 +59,7 @@ public class Board implements Serializable{
 		this.cards = cards;
 	}
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "myBoards")
 	public List<User> getUsers() {
 		return users;
 	}
@@ -68,4 +68,15 @@ public class Board implements Serializable{
 		this.users = users;
 	}
 
+	@ManyToOne
+	public Project getMyProject() {
+		return myProject;
+	}
+
+	public void setMyProject(Project myProject) {
+		this.myProject = myProject;
+	}
+
+	
+	
 }

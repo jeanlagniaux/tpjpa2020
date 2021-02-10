@@ -40,7 +40,7 @@ public class JpaTest {
 //		card.setAffectedUser(user);
 //		dao.save(card);
 		
-		System.out.println("user : "+ dao.getAffectedUser().get(0).getName());
+		// System.out.println("user : "+ dao.getAffectedUser().get(0).getName());
 		
 
 		// test
